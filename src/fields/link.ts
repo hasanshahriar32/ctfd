@@ -46,7 +46,6 @@ const link: Field = {
           name: 'page',
           label: 'Page to link to',
           type: 'relationship',
-          //@ts-ignore
           relationTo: 'pages',
           required: true,
           admin: {

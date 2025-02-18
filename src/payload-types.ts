@@ -70,6 +70,7 @@ export interface Config {
     'form-submissions': FormSubmission;
     studies: Study;
     categories: Category;
+    pages: Page;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -81,6 +82,7 @@ export interface Config {
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     studies: StudiesSelect<false> | StudiesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -190,8 +192,263 @@ export interface FormSubmission {
  */
 export interface Study {
   id: number;
-  name: string;
+  title: string;
   featuredImage: number | Media;
+  layout?:
+    | (
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            actions?:
+              | {
+                  link: {
+                    type?: ('page' | 'custom') | null;
+                    label: string;
+                    page?: (number | null) | Page;
+                    url?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'call-to-action';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            columns?:
+              | {
+                  width: 'oneThird' | 'half' | 'twoThirds' | 'full';
+                  alignment: 'left' | 'center' | 'right';
+                  content: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            accentLine?: boolean | null;
+            accentLineAlignment?: ('left' | 'right') | null;
+            paddingTop?: ('none' | 'small' | 'medium' | 'large') | null;
+            paddingBottom?: ('none' | 'small' | 'medium' | 'large') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
+        | {
+            actions?:
+              | {
+                  headline: string;
+                  link: {
+                    type?: ('page' | 'custom') | null;
+                    label: string;
+                    page?: (number | null) | Page;
+                    url?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta-grid';
+          }
+        | {
+            image: number | Media;
+            type?: ('normal' | 'fullscreen' | 'wide') | null;
+            caption?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image';
+          }
+        | {
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-collage';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            enableCTA?: boolean | null;
+            link?: {
+              type?: ('page' | 'custom') | null;
+              label: string;
+              page?: (number | null) | Page;
+              url?: string | null;
+            };
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-content-collage';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            content?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            images?:
+              | {
+                  image: number | Media;
+                  content?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-grid';
+          }
+        | {
+            stats?:
+              | {
+                  stat?: string | null;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-stat-collage';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'slider';
+          }
+        | {
+            size: 'small' | 'medium' | 'large';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'spacer';
+          }
+        | {
+            topOverlap?: ('none' | 'small' | 'medium' | 'large') | null;
+            bottomOverlap?: ('none' | 'small' | 'medium' | 'large') | null;
+            stats?:
+              | {
+                  stat?: string | null;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'statistics';
+          }
+        | {
+            sections?:
+              | {
+                  label: string;
+                  description: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'sticky-content';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            studies: (number | Study)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'study-slider';
+          }
+      )[]
+    | null;
+  previewImages?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
   client?: string | null;
   location?: string | null;
   categories?: (number | Category)[] | null;
@@ -206,11 +463,293 @@ export interface Study {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  heroType: 'minimal' | 'contentAboveImage' | 'contentLeftOfImage';
+  heroContent: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  heroImage?: (number | null) | Media;
+  layout?:
+    | (
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            actions?:
+              | {
+                  link: {
+                    type?: ('page' | 'custom') | null;
+                    label: string;
+                    page?: (number | null) | Page;
+                    url?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'call-to-action';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            columns?:
+              | {
+                  width: 'oneThird' | 'half' | 'twoThirds' | 'full';
+                  alignment: 'left' | 'center' | 'right';
+                  content: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            accentLine?: boolean | null;
+            accentLineAlignment?: ('left' | 'right') | null;
+            paddingTop?: ('none' | 'small' | 'medium' | 'large') | null;
+            paddingBottom?: ('none' | 'small' | 'medium' | 'large') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
+        | {
+            actions?:
+              | {
+                  headline: string;
+                  link: {
+                    type?: ('page' | 'custom') | null;
+                    label: string;
+                    page?: (number | null) | Page;
+                    url?: string | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta-grid';
+          }
+        | {
+            image: number | Media;
+            type?: ('normal' | 'fullscreen' | 'wide') | null;
+            caption?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image';
+          }
+        | {
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-collage';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            enableCTA?: boolean | null;
+            link?: {
+              type?: ('page' | 'custom') | null;
+              label: string;
+              page?: (number | null) | Page;
+              url?: string | null;
+            };
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-content-collage';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            content?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            images?:
+              | {
+                  image: number | Media;
+                  content?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-grid';
+          }
+        | {
+            stats?:
+              | {
+                  stat?: string | null;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-stat-collage';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            images?:
+              | {
+                  image: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'slider';
+          }
+        | {
+            size: 'small' | 'medium' | 'large';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'spacer';
+          }
+        | {
+            topOverlap?: ('none' | 'small' | 'medium' | 'large') | null;
+            bottomOverlap?: ('none' | 'small' | 'medium' | 'large') | null;
+            stats?:
+              | {
+                  stat?: string | null;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'statistics';
+          }
+        | {
+            sections?:
+              | {
+                  label: string;
+                  description: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'sticky-content';
+          }
+        | {
+            backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
+            studies: (number | Study)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'study-slider';
+          }
+      )[]
+    | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    keywords?: string | null;
+  };
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
   id: number;
-  name: string;
+  title: string;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -241,6 +780,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -358,8 +901,212 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
  * via the `definition` "studies_select".
  */
 export interface StudiesSelect<T extends boolean = true> {
-  name?: T;
+  title?: T;
   featuredImage?: T;
+  layout?:
+    | T
+    | {
+        'call-to-action'?:
+          | T
+          | {
+              backgroundColor?: T;
+              content?: T;
+              actions?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          url?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        content?:
+          | T
+          | {
+              backgroundColor?: T;
+              columns?:
+                | T
+                | {
+                    width?: T;
+                    alignment?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              accentLine?: T;
+              accentLineAlignment?: T;
+              paddingTop?: T;
+              paddingBottom?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'cta-grid'?:
+          | T
+          | {
+              actions?:
+                | T
+                | {
+                    headline?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          url?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        image?:
+          | T
+          | {
+              image?: T;
+              type?: T;
+              caption?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'image-collage'?:
+          | T
+          | {
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'image-content-collage'?:
+          | T
+          | {
+              backgroundColor?: T;
+              content?: T;
+              enableCTA?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    label?: T;
+                    page?: T;
+                    url?: T;
+                  };
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'image-grid'?:
+          | T
+          | {
+              backgroundColor?: T;
+              content?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'image-stat-collage'?:
+          | T
+          | {
+              stats?:
+                | T
+                | {
+                    stat?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        slider?:
+          | T
+          | {
+              backgroundColor?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        spacer?:
+          | T
+          | {
+              size?: T;
+              id?: T;
+              blockName?: T;
+            };
+        statistics?:
+          | T
+          | {
+              topOverlap?: T;
+              bottomOverlap?: T;
+              stats?:
+                | T
+                | {
+                    stat?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'sticky-content'?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'study-slider'?:
+          | T
+          | {
+              backgroundColor?: T;
+              studies?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  previewImages?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   client?: T;
   location?: T;
   categories?: T;
@@ -379,7 +1126,225 @@ export interface StudiesSelect<T extends boolean = true> {
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
-  name?: T;
+  title?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  heroType?: T;
+  heroContent?: T;
+  heroImage?: T;
+  layout?:
+    | T
+    | {
+        'call-to-action'?:
+          | T
+          | {
+              backgroundColor?: T;
+              content?: T;
+              actions?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          url?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        content?:
+          | T
+          | {
+              backgroundColor?: T;
+              columns?:
+                | T
+                | {
+                    width?: T;
+                    alignment?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              accentLine?: T;
+              accentLineAlignment?: T;
+              paddingTop?: T;
+              paddingBottom?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'cta-grid'?:
+          | T
+          | {
+              actions?:
+                | T
+                | {
+                    headline?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          label?: T;
+                          page?: T;
+                          url?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        image?:
+          | T
+          | {
+              image?: T;
+              type?: T;
+              caption?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'image-collage'?:
+          | T
+          | {
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'image-content-collage'?:
+          | T
+          | {
+              backgroundColor?: T;
+              content?: T;
+              enableCTA?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    label?: T;
+                    page?: T;
+                    url?: T;
+                  };
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'image-grid'?:
+          | T
+          | {
+              backgroundColor?: T;
+              content?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'image-stat-collage'?:
+          | T
+          | {
+              stats?:
+                | T
+                | {
+                    stat?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        slider?:
+          | T
+          | {
+              backgroundColor?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        spacer?:
+          | T
+          | {
+              size?: T;
+              id?: T;
+              blockName?: T;
+            };
+        statistics?:
+          | T
+          | {
+              topOverlap?: T;
+              bottomOverlap?: T;
+              stats?:
+                | T
+                | {
+                    stat?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'sticky-content'?:
+          | T
+          | {
+              sections?:
+                | T
+                | {
+                    label?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'study-slider'?:
+          | T
+          | {
+              backgroundColor?: T;
+              studies?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+      };
   slug?: T;
   updatedAt?: T;
   createdAt?: T;
