@@ -1,7 +1,7 @@
 import React from 'react'
 import { Block } from 'payload'
-import backgroundColor from '@/fields/backgroundColor'
-// import RichText from '../../components/RichText';
+import RichText from '../../components/RichText'
+import backgroundColor from '../../fields/backgroundColor'
 
 export type ColumnWidth = 'oneThird' | 'half' | 'twoThirds' | 'full'
 
@@ -130,7 +130,7 @@ export const Content: Block = {
         },
       ],
       admin: {
-        condition: (_: any, siblingData: { accentLine?: any }) => siblingData.accentLine,
+        condition: (_, siblingData) => siblingData.accentLine,
         layout: 'horizontal',
       },
     },

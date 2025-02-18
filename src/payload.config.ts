@@ -6,9 +6,9 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import FormSubmissions from './collections/FormSubmissions'
 import { Users } from './collections/Users'
-import { Media } from './collections/Media'
 import Study from './collections/Studies'
 import Category from './collections/Category'
+import Media from './collections/Media'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
