@@ -69,6 +69,7 @@ export interface Config {
     media: Media;
     'form-submissions': FormSubmission;
     studies: Study;
+    categories: Category;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     studies: StudiesSelect<false> | StudiesSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -171,9 +173,27 @@ export interface FormSubmission {
 export interface Study {
   id: number;
   name: string;
-  email: string;
-  message: string;
-  source: string;
+  featuredImage: number | Media;
+  client?: string | null;
+  location?: string | null;
+  categories?: (number | Category)[] | null;
+  slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    keywords?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  name: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -199,6 +219,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'studies';
         value: number | Study;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -293,9 +317,28 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
  */
 export interface StudiesSelect<T extends boolean = true> {
   name?: T;
-  email?: T;
-  message?: T;
-  source?: T;
+  featuredImage?: T;
+  client?: T;
+  location?: T;
+  categories?: T;
+  slug?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
