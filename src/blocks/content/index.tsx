@@ -1,6 +1,6 @@
 import React from 'react'
 import { Block } from 'payload'
-import RichText from '../../components/RichText'
+// import RichText from '../../components/RichText'
 import backgroundColor from '../../fields/backgroundColor'
 
 export type ColumnWidth = 'oneThird' | 'half' | 'twoThirds' | 'full'
