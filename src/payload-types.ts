@@ -93,10 +93,12 @@ export interface Config {
   globals: {
     'mega-menu': MegaMenu;
     'social-media': SocialMedia;
+    footer: Footer;
   };
   globalsSelect: {
     'mega-menu': MegaMenuSelect<false> | MegaMenuSelect<true>;
     'social-media': SocialMediaSelect<false> | SocialMediaSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
   };
   locale: null;
   user: User & {
@@ -1425,6 +1427,26 @@ export interface SocialMedia {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  nav?:
+    | {
+        link: {
+          type?: ('page' | 'custom') | null;
+          label: string;
+          page?: (number | null) | Page;
+          url?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "mega-menu_select".
  */
 export interface MegaMenuSelect<T extends boolean = true> {
@@ -1455,6 +1477,28 @@ export interface SocialMediaSelect<T extends boolean = true> {
     | {
         label?: T;
         url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  nav?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              label?: T;
+              page?: T;
+              url?: T;
+            };
         id?: T;
       };
   updatedAt?: T;
