@@ -25,7 +25,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, FormSubmissions, Study, Category, Page],
-  globals: [MegaMenu],
+  globals: [SocialMedia, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
