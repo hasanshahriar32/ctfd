@@ -10,9 +10,9 @@ import Study from './collections/Studies'
 import Category from './collections/Category'
 import Media from './collections/Media'
 import Page from './collections/Page'
-import MegaMenu from './globals/MegaMenu'
-import SocialMedia from './globals/SocialMedia'
-import Footer from './globals/Footer'
+// import MegaMenu from './globals/MegaMenu'
+// import SocialMedia from './globals/SocialMedia'
+// import Footer from './globals/Footer'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
