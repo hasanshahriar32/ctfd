@@ -10,9 +10,9 @@ import Study from './collections/Studies'
 import Category from './collections/Category'
 import Media from './collections/Media'
 import Page from './collections/Page'
-// import MegaMenu from './globals/MegaMenu'
-// import SocialMedia from './globals/SocialMedia'
-// import Footer from './globals/Footer'
+import MegaMenu from './globals/MegaMenu'
+import SocialMedia from './globals/SocialMedia'
+import Footer from './globals/Footer'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,7 +25,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, FormSubmissions, Study, Category, Page],
-  // globals: [MegaMenu, SocialMedia, Footer],
+  globals: [MegaMenu],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
