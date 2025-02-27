@@ -25,8 +25,8 @@ const FormSubmissions: CollectionConfig = {
       },
     },
     {
-      name: 'message',
-      label: 'Message',
+      name: 'comment',
+      label: 'Comment',
       type: 'textarea',
       required: true,
       admin: {

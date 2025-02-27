@@ -32,14 +32,14 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  // db: vercelPostgresAdapter({
-  //   pool: {
-  //     connectionString: process.env.POSTGRES_URL || '',
-  //   },
-  // }),
-  db: mongooseAdapter({
-    url: process.env.MONGO_URI || '',
+  db: vercelPostgresAdapter({
+    pool: {
+      connectionString: process.env.POSTGRES_URL || '',
+    },
   }),
+  // db: mongooseAdapter({
+  //   url: process.env.MONGO_URI || '',
+  // }),
   plugins: [
     vercelBlobStorage({
       collections: {
