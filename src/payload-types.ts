@@ -88,7 +88,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   globals: {
     'mega-menu': MegaMenu;
@@ -132,7 +132,7 @@ export interface UserAuthOperations {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -149,7 +149,7 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -186,7 +186,7 @@ export interface Media {
  * via the `definition` "form-submissions".
  */
 export interface FormSubmission {
-  id: number;
+  id: string;
   name: string;
   email: string;
   message: string;
@@ -199,9 +199,9 @@ export interface FormSubmission {
  * via the `definition` "studies".
  */
 export interface Study {
-  id: number;
+  id: string;
   title: string;
-  featuredImage: number | Media;
+  featuredImage: string | Media;
   layout?:
     | (
         | {
@@ -226,7 +226,7 @@ export interface Study {
                   link: {
                     type?: ('page' | 'custom') | null;
                     label: string;
-                    page?: (number | null) | Page;
+                    page?: (string | null) | Page;
                     url?: string | null;
                   };
                   id?: string | null;
@@ -275,7 +275,7 @@ export interface Study {
                   link: {
                     type?: ('page' | 'custom') | null;
                     label: string;
-                    page?: (number | null) | Page;
+                    page?: (string | null) | Page;
                     url?: string | null;
                   };
                   id?: string | null;
@@ -286,7 +286,7 @@ export interface Study {
             blockType: 'cta-grid';
           }
         | {
-            image: number | Media;
+            image: string | Media;
             type?: ('normal' | 'fullscreen' | 'wide') | null;
             caption?: {
               root: {
@@ -310,7 +310,7 @@ export interface Study {
         | {
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -339,12 +339,12 @@ export interface Study {
             link?: {
               type?: ('page' | 'custom') | null;
               label: string;
-              page?: (number | null) | Page;
+              page?: (string | null) | Page;
               url?: string | null;
             };
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -371,7 +371,7 @@ export interface Study {
             } | null;
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   content?: string | null;
                   id?: string | null;
                 }[]
@@ -390,7 +390,7 @@ export interface Study {
               | null;
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -402,7 +402,7 @@ export interface Study {
             backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -444,7 +444,7 @@ export interface Study {
           }
         | {
             backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
-            studies: (number | Study)[];
+            studies: (string | Study)[];
             id?: string | null;
             blockName?: string | null;
             blockType: 'study-slider';
@@ -453,13 +453,13 @@ export interface Study {
     | null;
   previewImages?:
     | {
-        image: number | Media;
+        image: string | Media;
         id?: string | null;
       }[]
     | null;
   client?: string | null;
   location?: string | null;
-  categories?: (number | Category)[] | null;
+  categories?: (string | Category)[] | null;
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -474,7 +474,7 @@ export interface Study {
  * via the `definition` "pages".
  */
 export interface Page {
-  id: number;
+  id: string;
   title: string;
   heroType: 'minimal' | 'contentAboveImage' | 'contentLeftOfImage';
   heroContent: {
@@ -492,7 +492,7 @@ export interface Page {
     };
     [k: string]: unknown;
   };
-  heroImage?: (number | null) | Media;
+  heroImage?: (string | null) | Media;
   layout?:
     | (
         | {
@@ -517,7 +517,7 @@ export interface Page {
                   link: {
                     type?: ('page' | 'custom') | null;
                     label: string;
-                    page?: (number | null) | Page;
+                    page?: (string | null) | Page;
                     url?: string | null;
                   };
                   id?: string | null;
@@ -566,7 +566,7 @@ export interface Page {
                   link: {
                     type?: ('page' | 'custom') | null;
                     label: string;
-                    page?: (number | null) | Page;
+                    page?: (string | null) | Page;
                     url?: string | null;
                   };
                   id?: string | null;
@@ -577,7 +577,7 @@ export interface Page {
             blockType: 'cta-grid';
           }
         | {
-            image: number | Media;
+            image: string | Media;
             type?: ('normal' | 'fullscreen' | 'wide') | null;
             caption?: {
               root: {
@@ -601,7 +601,7 @@ export interface Page {
         | {
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -630,12 +630,12 @@ export interface Page {
             link?: {
               type?: ('page' | 'custom') | null;
               label: string;
-              page?: (number | null) | Page;
+              page?: (string | null) | Page;
               url?: string | null;
             };
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -662,7 +662,7 @@ export interface Page {
             } | null;
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   content?: string | null;
                   id?: string | null;
                 }[]
@@ -681,7 +681,7 @@ export interface Page {
               | null;
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -693,7 +693,7 @@ export interface Page {
             backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
             images?:
               | {
-                  image: number | Media;
+                  image: string | Media;
                   id?: string | null;
                 }[]
               | null;
@@ -735,7 +735,7 @@ export interface Page {
           }
         | {
             backgroundColor?: ('none' | 'red' | 'blue' | 'orange') | null;
-            studies: (number | Study)[];
+            studies: (string | Study)[];
             id?: string | null;
             blockName?: string | null;
             blockType: 'study-slider';
@@ -756,7 +756,7 @@ export interface Page {
  * via the `definition` "categories".
  */
 export interface Category {
-  id: number;
+  id: string;
   title: string;
   slug?: string | null;
   updatedAt: string;
@@ -767,36 +767,36 @@ export interface Category {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'users';
-        value: number | User;
+        value: string | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'form-submissions';
-        value: number | FormSubmission;
+        value: string | FormSubmission;
       } | null)
     | ({
         relationTo: 'studies';
-        value: number | Study;
+        value: string | Study;
       } | null)
     | ({
         relationTo: 'categories';
-        value: number | Category;
+        value: string | Category;
       } | null)
     | ({
         relationTo: 'pages';
-        value: number | Page;
+        value: string | Page;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -806,10 +806,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -829,7 +829,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -1394,13 +1394,13 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  * via the `definition` "mega-menu".
  */
 export interface MegaMenu {
-  id: number;
+  id: string;
   nav?:
     | {
         link: {
           type?: ('page' | 'custom') | null;
           label: string;
-          page?: (number | null) | Page;
+          page?: (string | null) | Page;
           url?: string | null;
         };
         id?: string | null;
@@ -1414,7 +1414,7 @@ export interface MegaMenu {
  * via the `definition` "social-media".
  */
 export interface SocialMedia {
-  id: number;
+  id: string;
   links?:
     | {
         label: string;
@@ -1430,13 +1430,13 @@ export interface SocialMedia {
  * via the `definition` "footer".
  */
 export interface Footer {
-  id: number;
+  id: string;
   nav?:
     | {
         link: {
           type?: ('page' | 'custom') | null;
           label: string;
-          page?: (number | null) | Page;
+          page?: (string | null) | Page;
           url?: string | null;
         };
         id?: string | null;
