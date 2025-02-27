@@ -13,7 +13,6 @@ import Page from './collections/Page'
 import MegaMenu from './globals/MegaMenu'
 import SocialMedia from './globals/SocialMedia'
 import Footer from './globals/Footer'
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,13 +31,10 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  // db: vercelPostgresAdapter({
-  //   pool: {
-  //     connectionString: process.env.POSTGRES_URL || '',
-  //   },
-  // }),
-  db: mongooseAdapter({
-    url: process.env.MONGO_URI || '',
+  db: vercelPostgresAdapter({
+    pool: {
+      connectionString: process.env.POSTGRES_URL || '',
+    },
   }),
   plugins: [
     vercelBlobStorage({
