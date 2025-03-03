@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles.css'
+import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata = {
   title: 'CTF Writeups',
@@ -10,9 +11,11 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <main>{children}</main>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )
