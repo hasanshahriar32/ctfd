@@ -16,7 +16,7 @@ export default function Home() {
           <Link href="/" className="flex items-center gap-2">
             <Shield className="h-8 w-8 text-primary" />
             <span className="text-xl font-bold tracking-tight">
-              CTF<span className="text-primary">_MASTER</span>
+              CTF<span className="text-primary">_PARADOX</span>
             </span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
@@ -51,7 +51,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 glitch-text">Capture The Flag</h1>
             <TerminalEffect
-              text="Welcome to the ultimate CTF resource. Learn, compete, and master the art of cybersecurity."
+              text="Welcome to the ultimate CTF resource. Learn, compete, and PARADOX the art of cybersecurity."
               className="text-xl md:text-2xl mb-8 text-muted-foreground"
             />
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -68,7 +68,7 @@ export default function Home() {
       <section id="about" className="py-20 bg-muted">
         <div className="container">
           <h2 className="text-3xl font-bold mb-12 text-center">
-            <span className="text-primary">&gt;</span> About CTF_MASTER
+            <span className="text-primary">&gt;</span> About CTF_PARADOX
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-background p-6 rounded-lg border border-border hover:border-primary transition-colors">
@@ -190,10 +190,10 @@ export default function Home() {
               <Link href="/" className="flex items-center gap-2">
                 <Shield className="h-6 w-6 text-primary" />
                 <span className="text-lg font-bold">
-                  CTF<span className="text-primary">_MASTER</span>
+                  CTF<span className="text-primary">_PARADOX</span>
                 </span>
               </Link>
-              <p className="text-muted-foreground mt-2">Mastering the art of Capture The Flag</p>
+              <p className="text-muted-foreground mt-2">PARADOXing the art of Capture The Flag</p>
             </div>
             <div className="flex gap-8">
               <div>
@@ -237,7 +237,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground text-sm">
-            <p>&copy; {new Date().getFullYear()} CTF_MASTER. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} CTF_PARADOX. All rights reserved.</p>
           </div>
         </div>
       </footer>
