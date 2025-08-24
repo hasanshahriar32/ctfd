@@ -14,8 +14,8 @@ Place: 6th
 [use-a-specific-browser.md](use-a-specific-browser.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../group-1/page-3.md" %}
-[page-3.md](../../group-1/page-3.md)
+{% content-ref url="the-secret-doors.md" %}
+[the-secret-doors.md](the-secret-doors.md)
 {% endcontent-ref %}
 
 {% content-ref url="the-pain-of-losing-a-loved-one..md" %}

@@ -2,14 +2,14 @@
 
 * [Documentation CTF](README.md)
 
-## 2015
+## 2025
 
-* [Tryhackme](2015/tryhackme/README.md)
-  * [hammer](2015/tryhackme/hammer.md)
-* [BOCTF](2015/boctf/README.md)
-  * [Use a specific Browser](2015/boctf/use-a-specific-browser.md)
-  * [The secret doors](group-1/page-3.md)
-  * [The pain of losing a loved one.](2015/boctf/the-pain-of-losing-a-loved-one..md)
-  * [RSA Encryption](2015/boctf/rsa-encryption.md)
+* [Tryhackme](2025/tryhackme/README.md)
+  * [hammer](2025/tryhackme/hammer.md)
+* [BOCTF](2025/boctf/README.md)
+  * [Use a specific Browser](2025/boctf/use-a-specific-browser.md)
+  * [The secret doors](2025/boctf/the-secret-doors.md)
+  * [The pain of losing a loved one.](2025/boctf/the-pain-of-losing-a-loved-one..md)
+  * [RSA Encryption](2025/boctf/rsa-encryption.md)
 
 ## Group 1
