@@ -13,9 +13,7 @@ encrypted\_message\_b64 = 'GoUl4qxpPzNujGprriG7Xzbtk2/qG3poER2E9HRrlWtuYm9mKIXIp
 
 
 
-**Solution 1**
-
-**:**
+**Solution 1:**
 
 This problem was to decrypt a message that was previously encoded with RSA or some variant of RSA.\
 The private key also was given. So we just need to try all the variants of RSA to decrypt the message.
