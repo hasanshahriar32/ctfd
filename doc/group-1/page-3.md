@@ -9,7 +9,7 @@ A cunning login challenge requiring precise credentials The secret door opens fo
 
 {% embed url="https://tboctf.great-site.net/f07a1c2d9e4b5a6f.php" %}
 
-<figure><img src="../../.gitbook/assets/Screenshot (448).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot (448).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -30,11 +30,11 @@ But it was also in vain. \
 \
 After that I tried to use a blank password. But the HTML form required writing something in the password field. For that I did a workaround by omitting the "required" attribute from the form's password field.&#x20;
 
-<figure><img src="../../.gitbook/assets/Screenshot (449).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot (449).png" alt=""><figcaption></figcaption></figure>
 
 
 
 Then I tried to submit the login form. And it was successful! 🥳
 
-<figure><img src="../../.gitbook/assets/Screenshot (450).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot (450).png" alt=""><figcaption></figcaption></figure>
 
